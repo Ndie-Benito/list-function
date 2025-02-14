@@ -1,4 +1,4 @@
-locals{
+/*locals{
 
   servicename="abracadabra"
 
@@ -23,4 +23,4 @@ character_enemy_map =   { for character in local.characters: # Convert character
 }
 
 }
- 
+ */
