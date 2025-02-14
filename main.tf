@@ -13,7 +13,7 @@ locals {
   }
 }
 
-# 📌 Outputs pour afficher les valeurs des locals
+#  Outputs pour afficher les valeurs des locals
 output "servicename" {
   value = local.servicename
 }
