@@ -1,43 +1,26 @@
 locals {
-  servicename        = "abracadabra"
-  forum             = "abracadabramcit"
-  lengthsa          = length(local.servicename)
-  lengthforum       = length(local.forum)
-  winterlistOfSports = ["icehockey", "snowboarding", "iceskating"]
-  total_output      = ["150", "150", "150"]
-  characters        = ["luke", "yoda", "darth"]
-  enemies_destroyed = [4252, 900, 20000056894]
+  mcitstudents = ["Bachir", "Maryam", "Benito"]
+  mcitteachers = ["Aldo", "Keyvan", "Haman"]
 
-  character_enemy_map = { 
-    for character in local.characters : character => local.enemies_destroyed
-  }
+  # Création d'une liste de paires étudiant-enseignant
+  mcit_student_teacher_combo_list = [
+    "${local.mcitstudents[0]} - ${local.mcitteachers[0]}",
+    "${local.mcitstudents[1]} - ${local.mcitteachers[1]}",
+    "${local.mcitstudents[2]} - ${local.mcitteachers[2]}"
+  ]
 }
 
-#  Outputs pour afficher les valeurs des locals
-output "servicename" {
-  value = local.servicename
+# Afficher chaque étudiant
+output "students_list" {
+  value = [for i in range(length(local.mcitstudents)) : local.mcitstudents[i]]
 }
 
-output "forum" {
-  value = local.forum
+# Afficher chaque enseignant
+output "teachers_list" {
+  value = [for i in range(length(local.mcitteachers)) : local.mcitteachers[i]]
 }
 
-output "length_of_servicename" {
-  value = local.lengthsa
-}
-
-output "length_of_forum" {
-  value = local.lengthforum
-}
-
-output "winter_sports" {
-  value = local.winterlistOfSports
-}
-
-output "total_output" {
-  value = local.total_output
-}
-
-output "character_enemy_mapping" {
-  value = local.character_enemy_map
+# Afficher chaque paire étudiant-enseignant
+output "student_teacher_combo_list" {
+  value = [for i in range(length(local.mcit_student_teacher_combo_list)) : local.mcit_student_teacher_combo_list[i]]
 }
